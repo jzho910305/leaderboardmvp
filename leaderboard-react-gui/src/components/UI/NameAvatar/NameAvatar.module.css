@@ -1,0 +1,38 @@
+.NameAvatar:before {
+    content:attr(data-letters);
+    display:inline-block;
+    font-size:1em;
+    width:4em;
+    height:4em;
+    line-height:4em;
+    text-align:center;
+    border-radius:50%;
+    background:#004B7C;
+    vertical-align:middle;
+    margin-right:1em;
+    color:white;
+}
+
+.NameAvatar {
+    color: #004B7C;
+    font-weight: bold;
+}
+
+.name {
+    color: #004B7C;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 500px) {
+    .NameAvatar:before {
+        font-size: 1em;
+        width: 2.5em;
+        height: 2.5em;
+        line-height: 2.5em;
+        margin-right: 1em;
+    }
+
+    .name {
+        display: none;
+    }
+}

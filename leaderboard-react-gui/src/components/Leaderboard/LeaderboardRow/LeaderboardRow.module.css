@@ -1,0 +1,42 @@
+.LeaderboardRow {
+    display: flex;
+    width: 80%;
+    max-width: 60rem;
+    margin: 1rem auto;
+    transition: box-shadow 200ms;
+}
+
+.LeaderboardRow:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.rank {
+    width: 10%;
+    background: rgba(0,75,124, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    font-size: 300%;
+    cursor: pointer;
+}
+
+.details {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    transition: box-shadow 200ms;
+    border-radius: .25rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 470px) {
+    .LeaderboardRow {
+        width: 95%;
+    }
+}
