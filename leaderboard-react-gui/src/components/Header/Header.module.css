@@ -1,0 +1,28 @@
+.Header {
+    background-color: #F2F2F2;
+    height: 4.5rem;
+    color: #004B7C;
+    margin-bottom: 2rem;
+}
+
+.Header div {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 900px) {
+    .Header div {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .Header span {
+        display: none;
+    }
+}
+
+

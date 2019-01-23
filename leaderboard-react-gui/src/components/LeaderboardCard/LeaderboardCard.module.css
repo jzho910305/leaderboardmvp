@@ -1,0 +1,50 @@
+.imgContainer {
+    display: flex;
+    align-items: center;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LeaderboardCard {
+    width: 80%;
+    max-width: 60rem;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    transition: box-shadow 200ms;
+    border-radius: .25rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.LeaderboardCard:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.LeaderboardCard img {
+    height: 3rem;
+    width: auto;
+}
+
+@media only screen and (max-width: 650px) {
+    .LeaderboardCard {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .LeaderboardCard {
+        flex-direction: column;
+    }
+
+    .infoContainer {
+        margin-top: 1rem;
+    }
+}
