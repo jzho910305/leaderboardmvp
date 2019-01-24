@@ -1,5 +1,4 @@
 import React from 'react';
-import {Leaderboards} from '../../data/dataWarehouse';
 import LeaderboardCard from './LeaderboardCard/LeaderboardCard';
 
 const leaderboardCards = props => {

@@ -6,8 +6,8 @@ const input = ( props ) => {
     let inputElement = null;
     const inputClasses = [classes.formControl];
 
-    if (props.invalid && props.shouldValidate && props.touched) {
-        inputClasses.push(classes.Invalid);
+    if (props.invalid && props.touched) {
+        inputClasses.push(classes.invalid);
     }
 
     switch ( props.elementType ) {
@@ -49,9 +49,13 @@ const input = ( props ) => {
 
     return (
         <div className={classes.formGroup}>
-            <label>{props.label}</label>
+            <label>{props.elementConfig.label}</label>
             {inputElement}
-            <small id="error" className={`${classes.formText} ${classes.textMuted}`}>Some error message.</small>
+            <small id="error"
+                   style={{display: props.invalid && props.touched ? 'block' : 'none'}}
+                   className={`${classes.formText} ${classes.textMuted}`}>
+                Invalid {props.elementConfig.label}.
+            </small>
         </div>
     );
 

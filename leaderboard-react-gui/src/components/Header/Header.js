@@ -6,8 +6,8 @@ import classes from './Header.module.css';
 const header = props => {
     // todo: replace with actually items
     const items = [
-        {name: 'Sign In', link: '/signin', exact: true},
-        {name: 'Sign Up', link: 'signup', exact: true}
+        {name: 'SignIn', link: '/signin', exact: true},
+        {name: 'SignUp', link: 'signup', exact: true}
     ];
     return (
         <header className={classes.Header}>

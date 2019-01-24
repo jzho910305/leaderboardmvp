@@ -5,7 +5,7 @@ import classes from './MenuItems.module.css';
 const menuItems = props => {
     return (
         <ul className={classes.MenuItems}>
-            {props.items.map( item => <MenuItem {...item}>{item.name}</MenuItem>)}
+            {props.items.map( item => <MenuItem key={item.name} {...item}>{item.name}</MenuItem>)}
         </ul>
     );
 }

@@ -9,6 +9,7 @@
     text-decoration: none;
     display: block;
     color: #004B7C;
+    width: 100%;
 }
 
 .MenuItem a.active {

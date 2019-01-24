@@ -24,3 +24,12 @@
     display: block;
     margin-top: .25rem;
 }
+
+.formGroup label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.invalid {
+    border: 1px solid #dc3545;
+}

@@ -13,8 +13,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import LeaderboardCards from './components/LeaderboardCards/LeaderboardCards';
 import Leaderboard from './components/Leaderboard/Leaderboard';
-import SignUpForm from './containers/SignUpForm/SignUp';
-import SignInForm from './containers/SignInForm/SignIn';
+import SignUpForm from './containers/Auth/SignUpForm/SignUp';
+import SignInForm from './containers/Auth/SignInForm/SignIn';
 
 
 class App extends Component {
