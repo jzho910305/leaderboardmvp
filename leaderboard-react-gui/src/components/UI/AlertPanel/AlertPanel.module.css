@@ -1,0 +1,11 @@
+.AlertPanel {
+    color: #721c24;
+    background-color: #f8d7da;
+    position: relative;
+    margin-bottom: 1rem;
+    width: 90%;
+    padding: 1rem .75rem;
+    font-size: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: .25rem;
+}

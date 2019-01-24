@@ -4,7 +4,13 @@ import classes from '../SignUpForm/SignUpForm.module.css';
 import Input from '../../../components/UI/Input/Input';
 import Button from '../../../components/UI/Button/Button';
 import Title from '../../../components/UI/Title/Title';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import AlertPanel from '../../../components/UI/AlertPanel/AlertPanel';
 import {checkValidity} from '../validator';
+
+import * as actions from '../../../store/actions/index';
+import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
     state = {
@@ -65,11 +71,7 @@ class SignIn extends Component {
 
     signInHandler = event => {
         event.preventDefault();
-        const formData = {};
-        for (let formElementIdentifier in this.state.signInForm) {
-            formData[formElementIdentifier] = this.state.signInForm[formElementIdentifier].value;
-        }
-
+        this.props.onAuth(this.state.signInForm.email.value, this.state.signInForm.password.value, false);
     };
 
     render() {
@@ -81,21 +83,38 @@ class SignIn extends Component {
             });
         }
 
+        let form = formInputs.map(
+            input => <Input key={input.id}
+                            elementType={input.config.elementType}
+                            elementConfig={input.config.elementConfig}
+                            value={input.value}
+                            invalid={!input.config.valid}
+                            touched={input.config.touched}
+                            changed={event => this.inputChangedHandler(event, input.id)}/>);
+        if (this.props.loading) {
+            form = <Spinner/>;
+        }
+
+        let error = null;
+
+        if (this.props.error) {
+            error =  <AlertPanel>{this.props.error.message}</AlertPanel>
+        }
+
+        let redirect = null;
+        if (this.props.isAuthenticated) {
+            redirect = <Redirect to='/home'/>
+        }
+
         return (
             <Fragment>
                 <Title>Sign In</Title>
                 <form className={classes.SignForm}
                       onSubmit={this.signInHandler}
                       id='signInForm'>
-                    {formInputs.map(
-                        input => <Input key={input.id}
-                                        elementType={input.config.elementType}
-                                        elementConfig={input.config.elementConfig}
-                                        value={input.value}
-                                        invalid={!input.config.valid}
-                                        touched={input.config.touched}
-                                        changed={event => this.inputChangedHandler(event, input.id)}/>
-                    )}
+                    {redirect}
+                    {error}
+                    {form}
                     <Button disabled={!this.state.valid}
                             type='submit'
                             form='signInForm'
@@ -108,4 +127,20 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.signInError,
+        isAuthenticated: state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

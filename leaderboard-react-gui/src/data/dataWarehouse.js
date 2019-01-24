@@ -7,49 +7,49 @@ export const leaderboards = [
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l2',
         img: 'afl',
         name: 'AFL 2017',
         type: 'private',
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l3',
         img: 'nba',
         name: 'NBA Season 1',
         type: 'public',
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l4',
         img: 'afl',
         name: 'AFL 2016',
         type: 'private',
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l5',
         img: 'nba',
         name: 'NBA Season 3',
         type: 'public',
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l6',
         img: 'nba',
         name: 'NBA Season 2',
         type: 'private',
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l7',
         img: 'nba',
         name: 'NBA Season 4',
         type: 'private',
         subscriber: ['usr_1', 'usr_2']
     },
     {
-        id: 'l1',
+        id: 'l8',
         img: 'afl',
         name: 'AFL 2013',
         type: 'public',

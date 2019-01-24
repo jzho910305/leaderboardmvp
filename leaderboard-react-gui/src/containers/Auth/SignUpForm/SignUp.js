@@ -1,10 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import classes from './SignUpForm.module.css';
 import Input from '../../../components/UI/Input/Input';
-import CheckBoxInput from '../../../components/UI/Input/CheckBoxInput/CheckBoxInput';
 import Button from '../../../components/UI/Button/Button';
-import Title from "../../../components/UI/Title/Title";
+import Title from '../../../components/UI/Title/Title';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import AlertPanel from '../../../components/UI/AlertPanel/AlertPanel';
 import {checkValidity} from '../validator';
+
+import * as actions from '../../../store/actions/index';
+import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 export const formButtonStyle = {
     fontSize: '1rem',
@@ -87,11 +92,7 @@ class SignUp extends Component {
 
     signUpHandler = event => {
         event.preventDefault();
-        const formData = {};
-        for (let formElementIdentifier in this.state.signUpForm) {
-            formData[formElementIdentifier] = this.state.signUpForm[formElementIdentifier].value;
-        }
-
+        this.props.onAuth(this.state.signUpForm.email.value, this.state.signUpForm.password.value, true);
     };
 
     render() {
@@ -103,22 +104,41 @@ class SignUp extends Component {
             });
         }
 
+        let form = formInputs.map(
+            input => <Input key={input.id}
+                            elementType={input.config.elementType}
+                            elementConfig={input.config.elementConfig}
+                            value={input.value}
+                            invalid={!input.config.valid}
+                            touched={input.config.touched}
+                            changed={event => this.inputChangedHandler(event, input.id)}/>);
+
+        if (this.props.loading) {
+            form = <Spinner/>
+        }
+
+        let error = null;
+
+        if (this.props.error) {
+            error =  <AlertPanel>{this.props.error.message}</AlertPanel>
+        }
+
+        let redirect = null;
+
+        if (this.props.isAuthenticated) {
+            redirect = <Redirect to='/home'/>
+        }
+
         return (
             <Fragment>
                 <Title>Sign Up</Title>
                 <form className={classes.SignForm}
                       onSubmit={this.signUpHandler}
                       id='signUpForm'>
-                    {formInputs.map(
-                        input => <Input key={input.id}
-                                        elementType={input.config.elementType}
-                                        elementConfig={input.config.elementConfig}
-                                        value={input.value}
-                                        invalid={!input.config.valid}
-                                        touched={input.config.touched}
-                                        changed={ event => this.inputChangedHandler(event, input.id)}/>
-                    )}
-                    <CheckBoxInput label='Sign Up as a referee?'/>
+                    {redirect}
+                    {error}
+                    {form}
+                    {/*<CheckBoxInput label='Sign Up as a referee?'/>*/}
                     <Button disabled={!this.state.valid}
                             type='submit'
                             form='signUpForm'
@@ -126,10 +146,27 @@ class SignUp extends Component {
                         Sign Up
                     </Button>
                 </form>
+
             </Fragment>
         );
     }
 }
 
-export default SignUp;
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.signUpError,
+        isAuthenticated: state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
