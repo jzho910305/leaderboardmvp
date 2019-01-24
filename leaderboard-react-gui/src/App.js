@@ -5,15 +5,11 @@ import {connect} from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from './store/actions/index';
 
-// todo: import data mocks
-import {leaderboards} from "./data/dataWarehouse";
-import {competitors} from "./data/dataWarehouse";
-
 // components imports
 import Header from './containers/Header/Header';
 import Footer from './components/Footer/Footer';
-import LeaderboardCards from './components/LeaderboardCards/LeaderboardCards';
-import Leaderboard from './components/Leaderboard/Leaderboard';
+import LeaderboardCards from './containers/LeaderboardCards/LeaderboardCards';
+import Leaderboard from './containers/Leaderboard/Leaderboard';
 import SignUpForm from './containers/Auth/SignUpForm/SignUp';
 import SignInForm from './containers/Auth/SignInForm/SignIn';
 import Logout from './containers/Auth/Logout/Logout';
@@ -31,10 +27,10 @@ class App extends Component {
         const routes =
             this.props.isAuthenticated ?
                 <Switch>
-                    <Route path="/home" exact render={() => <LeaderboardCards leaderboards={leaderboards}/>}/>
-                    <Route path="/leaderboard" exact render={() => <Leaderboard leaderboardRows={competitors}/>}/>
+                    <Route path="/myLeaderboards" exact render={() => <LeaderboardCards/>}/>
+                    <Route path="/leaderboard/:id" exact render={() => <Leaderboard/>}/>
                     <Route path="/logout" exact component={Logout}/>
-                    <Redirect to="/home" />
+                    <Redirect to="/myLeaderboards" />
                 </Switch> :
                 <Switch>
                     <Route path="/signup" exact component={SignUpForm}/>

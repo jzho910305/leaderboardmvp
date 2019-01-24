@@ -103,7 +103,7 @@ class SignIn extends Component {
 
         let redirect = null;
         if (this.props.isAuthenticated) {
-            redirect = <Redirect to='/home'/>
+            redirect = <Redirect to='/myLeaderboards'/>
         }
 
         return (
