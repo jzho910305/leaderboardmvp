@@ -1,0 +1,16 @@
+.formCheck {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.formCheckInput {
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+}
+
+.formCheckLabel {
+    margin-bottom: 0;
+}

@@ -1,4 +1,16 @@
 .MenuItem {
     margin-left: 1rem;
     cursor: pointer;
+    display: block;
+    color: #004B7C;
+}
+
+.MenuItem a {
+    text-decoration: none;
+    display: block;
+    color: #004B7C;
+}
+
+.MenuItem a.active {
+
 }

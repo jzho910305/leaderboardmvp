@@ -1,0 +1,12 @@
+.Title {
+    color: #004B7C;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.Title span {
+    padding-bottom: 1rem;
+    display: inline-block;
+    border-bottom: 4px solid #004B7C;
+}
