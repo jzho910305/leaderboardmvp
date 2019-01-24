@@ -15,7 +15,6 @@ import SignInForm from './containers/Auth/SignInForm/SignIn';
 import Logout from './containers/Auth/Logout/Logout';
 
 const style = {textAlign: 'center', color: '#004B7C'};
-const PAGE_NOT_FOUND = <h1 style={style}>404...</h1>;
 const PLEASE_LOG_IN = <h1 style={style}>Please sign in...</h1>;
 
 class App extends Component {

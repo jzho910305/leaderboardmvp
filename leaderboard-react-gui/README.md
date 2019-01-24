@@ -57,7 +57,8 @@ npm run start
 ```
 
 ### Deployment
-* This GUI app has been depoyed to an AWS S3 bucket for demo purpose. URL:
+* This GUI app has been depoyed to an AWS S3 bucket for demo purpose. 
+URL: http://cloud.jing-sisucodingchallenge.s3-website-ap-southeast-2.amazonaws.com/myLeaderboards
 
 ### Built With
 * React 16

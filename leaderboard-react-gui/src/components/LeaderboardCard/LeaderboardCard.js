@@ -1,10 +1,9 @@
 import React from 'react';
 import classes from './LeaderboardCard.module.css';
 import Label from '../UI/Label/Label';
-import Button from '../UI/Button/Button';
 import {withRouter} from 'react-router-dom';
 
-const relativeImgPath = '/img/';
+const relativeImgPath = '/img';
 
 const leaderboardCard = (props) => {
     const route = {

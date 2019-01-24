@@ -14,7 +14,7 @@ const footer = props => {
                     or taking any action based on the content of this webpage.
                 </p>
                 <p>
-                    Copyright SISU Wellness
+                    Proudly Powered By Jing
                 </p>
                 <a className={classes.linkedIn} href="https://www.linkedin.com/in/jing-zhou-743201160/"></a>
             </div>
