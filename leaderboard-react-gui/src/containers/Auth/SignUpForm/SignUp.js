@@ -18,6 +18,8 @@ export const formButtonStyle = {
     background: '#004B7C'
 };
 
+const isPwdComfirmed = (p1, p2) => p1 === p2;
+
 class SignUp extends Component {
     state = {
         signUpForm: {
@@ -30,7 +32,8 @@ class SignUp extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    isEmail: true
                 },
                 valid: false,
                 touched: false
@@ -67,7 +70,8 @@ class SignUp extends Component {
             }
         },
         loading: false,
-        valid: false
+        valid: false,
+        passwordMismatch: false
     };
 
     inputChangedHandler = (event, inputIdentifier) => {
@@ -92,7 +96,12 @@ class SignUp extends Component {
 
     signUpHandler = event => {
         event.preventDefault();
-        this.props.onAuth(this.state.signUpForm.email.value, this.state.signUpForm.password.value, true);
+        if (this.state.signUpForm.password.value !== this.state.signUpForm.confirmPassword.value) {
+            this.setState({...this.state, passwordMismatch: true});
+        } else {
+            this.props.onAuth(this.state.signUpForm.email.value, this.state.signUpForm.password.value, true);
+        }
+
     };
 
     render() {
@@ -129,6 +138,12 @@ class SignUp extends Component {
             redirect = <Redirect to='/myLeaderboards'/>
         }
 
+        let passwordMismatchError = null;
+
+        if (this.state.passwordMismatch) {
+            passwordMismatchError = <AlertPanel>Passwords don't match.</AlertPanel>
+        }
+
         return (
             <Fragment>
                 <Title>Sign Up</Title>
@@ -137,6 +152,7 @@ class SignUp extends Component {
                       id='signUpForm'>
                     {redirect}
                     {error}
+                    {passwordMismatchError}
                     {form}
                     {/*<CheckBoxInput label='Sign Up as a referee?'/>*/}
                     <Button disabled={!this.state.valid}

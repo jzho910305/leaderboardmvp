@@ -1,44 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This solution was aimed to demonstrate my Javascript/ReactJS skills
+using mobile first design principle.
 
-## Available Scripts
+## Limitations
 
-In the project directory, you can run:
+Due to the time constraint, following assumptions are made:
 
-### `npm start`
+### Security 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Application Vulnerabilities were not concerned much during the development.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+### Scope
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A fully-implemented solution should have a `leaderboard view`, `leaderboard details view`,
+`contests view (completed and upcoming)`, `add leaderboard form`, `add contest form`,
+`REST API`, `DB`, `authentication` and `authorisation`. However, only `leaderboard view`, 
+`leaderboard details` and `authentication` were implemented here.
 
-### `npm run build`
+### Authentication
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Authentication was built using Firebase with minimal security policies. However, 
+a full SPA token auth solution was able to complete. Browser local storage was utilised
+to support auto authentication (after first login) but not the refresh token.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Backend & Data
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Hardcoded mocking data is used. Objects are linked by IDs. And setTimeout() was used
+in several componentDidMount() to simulate API calls.
 
-### `npm run eject`
+### State Management
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Redux and Redux-thunk were used for `cross-component state sharing` only (mainly for auth).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## App Setup in Local Environment
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Dependencies
+* npm version 6.2.0 or higer
 
-## Learn More
+### Installing
+* Clone repo to local file system:
+```
+git clone https://github.com/jzho910305/leaderboardmvp.git
+```
+* Navigate to /leaderboard-react-gui
+```
+cd $WHERE_YOU_CLONED_REPO/leaderboard-react-gui
+```
+* npm install app dependencies
+```
+npm install
+```
+* start hosting app locally
+```
+npm run start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Deployment
+* This GUI app has been depoyed to an AWS S3 bucket for demo purpose. URL:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Built With
+* React 16
+* React Router DOM
+* Redux 4 & React Redux 6
+* Axios 0.18
+* Redux Thunk 2
+
+**Note: All UI components and styling are `hand-made` without the use 
+of any component libraries for demo purpose.**
+
+## Authors
+
+* **Jing Zhou**
