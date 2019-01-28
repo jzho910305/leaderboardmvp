@@ -18,8 +18,6 @@ export const formButtonStyle = {
     background: '#004B7C'
 };
 
-const isPwdComfirmed = (p1, p2) => p1 === p2;
-
 class SignUp extends Component {
     state = {
         signUpForm: {

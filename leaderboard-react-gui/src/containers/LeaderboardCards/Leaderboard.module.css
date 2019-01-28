@@ -1,0 +1,21 @@
+.addLeaderboardButtonContainer {
+    width: 80%;
+    max-width: 60rem;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+@media only screen and (max-width: 650px) {
+    .addLeaderboardButtonContainer {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .addLeaderboardButtonContainer {
+        justify-content: center;
+    }
+}
