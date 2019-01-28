@@ -4,7 +4,7 @@ import NameAvatar from '../UI/NameAvatar/NameAvatar';
 import StatisticDisplay from '../UI/StatisticDisplay/StatisticDisplay';
 import VerticalLine from '../UI/VerticalLine/VerticalLine';
 
-const gold = {backgroundColor: '#ffcf40'};
+export const gold = {backgroundColor: '#ffcf40'};
 const leaderboardRow = props => {
     const points = props.row.wins + props.row.draws - props.row.losses;
     return (

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import classes from './NameAvatar.module.css';
 
-const getInitial = name => {
+export const getInitial = name => {
     let names = name.split(' '),
         initials = names[0].substring(0, 1).toUpperCase();
 
@@ -9,7 +9,7 @@ const getInitial = name => {
         initials += names[names.length - 1].substring(0, 1).toUpperCase();
     }
     return initials;
-}
+};
 
 // todo: add propTypes to check name
 const nameAvatar = props => {

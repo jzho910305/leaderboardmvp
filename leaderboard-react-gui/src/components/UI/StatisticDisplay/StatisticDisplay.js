@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './StatisticDisplay.module.css';
 
-const defaultColor = '#6c757d';
+export const defaultColor = '#6c757d';
 
 const statisticDisplay = props => {
     const color = props.color ? props.color : defaultColor;

@@ -7,12 +7,19 @@ import { NavLink } from 'react-router-dom';
 configure({adapter: new Adapter()});
 
 describe('<MenuItem/>', () => {
-    it('component will render a li', () => {
-        const wrapper = shallow(<MenuItem to='' exact=''></MenuItem>);
+    let wrapper;
+    beforeEach(() => {
+        wrapper = shallow(<MenuItem link=''/>);
+    });
+
+    it ('Will render without error', () => {
+       expect(wrapper).not.toEqual(null);
+    });
+
+    it('Will render a li', () => {
         expect(wrapper.find('li.MenuItem').exists()).toBe(true);
     });
-    it('component will render one NavLink', () => {
-        const wrapper = shallow(<MenuItem to='' exact=''></MenuItem>);
-        expect(wrapper.find(NavLink)).toHaveLength(1);
+    it('Will render one NavLink', () => {
+        expect(wrapper.find(NavLink).length).toEqual(1);
     });
 });
