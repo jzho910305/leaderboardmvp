@@ -48,7 +48,7 @@ schema.methods.generateAuthToken = function () {
     const access = 'auth';
     const token = jwt.sign({_id: user._id.toHexString(), access}, process.env.JWT_SECRET).toString();
 
-    user.tokens = [{access, token}];
+    user.token = user.token.concat([{access, token}]);
 
     return user.save().then(
         () => {
